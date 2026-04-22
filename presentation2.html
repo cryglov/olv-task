@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Quality Reach OLV — презентация v2 (Admon × Mediascope)</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { color-scheme: dark; }
+      body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+      .slide { display: none; }
+      .slide.is-active { display: block; }
+      .k { font-variation-settings: "wght" 600; }
+      .safe-area-pb { padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px)); }
+      .pb-safe { padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px)); }
+    </style>
+  </head>
+  <body class="bg-slate-950 text-slate-100">
+    <main class="min-h-[100dvh] min-h-[100svh] flex flex-col">
+      <header class="px-4 sm:px-6 md:px-10 py-4 md:py-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-b border-slate-800/60">
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <div class="text-sm font-semibold tracking-tight">Quality Reach OLV</div>
+          <div class="text-xs text-slate-400">Admon × Mediascope</div>
+        </div>
+        <div class="text-xs text-slate-400">
+          <span class="hidden md:inline">Навигация: <span class="text-slate-200">← →</span> / <span class="text-slate-200">Space</span> • Обзор: <span class="text-slate-200">G</span> • Полный экран: <span class="text-slate-200">F</span></span>
+          <span class="md:hidden text-slate-300">Свайп влево/вправо по слайду — следующий/предыдущий</span>
+        </div>
+      </header>
+
+      <section class="flex-1 px-4 sm:px-6 md:px-10 py-6 md:py-10 min-h-0">
+        <div class="max-w-[1200px] mx-auto">
+          <div id="deck" class="relative">
+            <!-- slides injected here -->
+          </div>
+        </div>
+      </section>
+
+      <footer class="px-4 sm:px-6 md:px-10 py-4 md:py-6 border-t border-slate-800/60 safe-area-pb">
+        <div class="max-w-[1200px] mx-auto flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+          <div class="text-xs text-slate-400 min-w-0 order-2 sm:order-1">
+            <span id="slideTitle" class="text-slate-200 font-medium line-clamp-2 sm:line-clamp-1"></span>
+          </div>
+          <div class="flex flex-wrap items-center justify-between sm:justify-end gap-3 sm:gap-4 order-1 sm:order-2 w-full sm:w-auto">
+            <div class="text-xs text-slate-400 tabular-nums shrink-0"><span id="idx">1</span>/<span id="total">1</span></div>
+            <div class="flex-1 min-w-[6rem] sm:flex-none sm:w-56 h-1.5 bg-slate-800 rounded-full overflow-hidden max-w-full">
+              <div id="bar" class="h-full bg-gradient-to-r from-indigo-400 to-blue-400 w-0"></div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+            <button type="button" id="prev" class="px-3 py-2 rounded-lg border border-slate-700/60 hover:bg-slate-800 text-sm min-w-[2.75rem]">←</button>
+            <button type="button" id="next" class="px-3 py-2 rounded-lg border border-slate-700/60 hover:bg-slate-800 text-sm min-w-[2.75rem]">→</button>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Grid view -->
+    <div id="grid" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur hidden overflow-y-auto">
+      <div class="p-4 sm:p-10 pb-safe">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6">
+          <div class="text-lg font-semibold">Обзор слайдов</div>
+          <button type="button" id="closeGrid" class="px-4 py-2 rounded-lg border border-slate-700/60 hover:bg-slate-800 text-sm self-start sm:self-auto">Закрыть (Esc)</button>
+        </div>
+        <div id="gridInner" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+    </div>
+
+    <script>
+      const slides = [
+        {
+          title: "Проблема рынка",
+          kicker: "Видео без единой системы координат",
+          h1: "Рынок видеорекламы растёт быстрее, чем сопоставимость измерений",
+          bullets: [
+            "У платформ — разные системы отчётности: сравнение превращается в ручной арбитраж",
+            "Для рекламодателя важна эффективность канала, а не устройство: web, app, Smart TV/OTT",
+            "Без единого контура измерения premium‑слой сложно обосновать в сделке — растёт риск переплаты",
+            "Post-buying: разные методики и трактовки данных → конфликт по результату и затраты на сверки",
+          ],
+          asideKicker: "Запрос рынка",
+          asideText: "Единая система координат измерения + коробочная проверка качества — меньше переплат и арбитража.",
+          layout: "bullets"
+        },
+        {
+          title: "Целевая аудитория",
+          kicker: "ICP",
+          h1: "Бренды и агентства — primary; площадки — secondary",
+          blocks: [
+            { h: "Бренды", p: "Обоснованная премиальная OLV-закупка, понятные критерии качества." },
+            { h: "Агентства", p: "Единые метрики и методология для отчёта клиенту." },
+            { h: "Площадки", p: "Верифицированный инвентарь как отдельное коммерческое предложение." },
+          ],
+          chips: ["OLV", "Video", "Digital", "CTV/OTT", "Premium / Standard", "B2B"],
+          layout: "cards"
+        },
+        {
+          title: "Решение",
+          kicker: "Измерение + проверка",
+          h1: "Один продукт — одна логика оценки OLV",
+          bullets: [
+            "Единый измеряемый контур OLV для сторон сделки",
+            "Контроль качества данных и трафика поверх измерения (IVT/аномалии)",
+            "Формализованное разделение premium и standard инвентаря",
+          ],
+          highlight: "Единые критерии оценки OLV‑инвентаря: премия к цене опирается на измеримость и подтверждение.",
+          layout: "bullets"
+        },
+        {
+          title: "Роли сторон",
+          kicker: "Разделение ответственности",
+          h1: "Mediascope — измерение. Admon — проверка качества.",
+          split: [
+            {
+              h: "Admon",
+              bullets: [
+                "Валидация событий и инвентаря",
+                "Контроль трафика, IVT, аномалий и сверок",
+                "Quality Stamp для подтверждённого инвентаря",
+              ]
+            },
+            {
+              h: "Mediascope",
+              bullets: [
+                "OLV по методологии Mediascope (в т.ч. midroll/postroll)",
+                "Фиксация измеряемого контура",
+                "Отчётность в привычном для рынка формате",
+              ]
+            }
+          ],
+          layout: "split"
+        },
+        {
+          title: "Эффект связки",
+          kicker: "Для закупки и продаж",
+          h1: "Два слоя контроля — одна методология",
+          bullets: [
+            "Снижение post-buying споров и ускорение согласования результата",
+            "Premium‑слой становится защищаемым коммерческим предложением",
+            "Standard‑слой прозрачно отделён: меньше переплат и конфликтов",
+          ],
+          layout: "bullets"
+        },
+        {
+          title: "Как работает",
+          kicker: "Четыре этапа",
+          h1: "Проверка инвентаря",
+          steps: [
+            { n: "01", h: "Подключение", p: "Состав инвентаря и правила измерения в согласованном периметре." },
+            { n: "02", h: "Проверка Admon", p: "События, трафик, индикаторы фрода и аномалий." },
+            { n: "03", h: "Измерение Mediascope", p: "OLV по согласованной методике, данные для отчёта." },
+            { n: "04", h: "Отчёт и Quality Stamp", p: "Итоговый статус инвентаря и единый отчёт для сторон сделки." },
+          ],
+          layout: "steps"
+        },
+        {
+          title: "Артефакты",
+          kicker: "На выходе",
+          h1: "Quality Stamp и единый отчёт",
+          blocks: [
+            { h: "Quality Stamp", p: "Маркировка верифицированного инвентаря в измеримом контуре." },
+            { h: "Quality Reach OLV Report", p: "Периметр, проверка Admon, IVT, сверки — в одном документе." },
+            { h: "Арбитраж", p: "Единая база для агентства, клиента и продавца." },
+          ],
+          layout: "cards"
+        },
+        {
+          title: "Монетизация",
+          kicker: "Коммерческая модель",
+          h1: "Пилот, базовый продукт, enterprise",
+          pricing: [
+            { h: "Доля от объёма", p: "Процент от OLV-объёма в premium-контуре; логика сопоставима с моделью учёта объёма." },
+            { h: "Premium markup к CPM", p: "Надбавка за верифицированный OLV‑инвентарь в измеримом контуре продаж." },
+            { h: "Аудит и комиссия", p: "Фикс за аудит, минимальная комиссия, комбинированные схемы — по конфигурации." },
+          ],
+          layout: "pricing"
+        },
+        {
+          title: "Запуск",
+          kicker: "Дорожная карта",
+          h1: "От согласования периметра к масштабированию",
+          bullets: [
+            "Этап 1: периметр измеримости OLV, правила premium-класса",
+            "Этап 2: валидации и сверки Admon на уровне инвентаря",
+            "Этап 3: шаблон отчёта, Quality Stamp, пилоты",
+            "Этап 4: фиксация коммерческой модели и масштабирование",
+          ],
+          note: "Скоуп: digital OLV; линейное ТВ и радио — вне периметра.",
+          layout: "bullets"
+        },
+        {
+          title: "Итог",
+          kicker: "Quality Reach OLV",
+          h1: "Единый стандарт видеоконтакта для OLV‑инвентаря",
+          bullets: [
+            "Mediascope: контур измерения и сопоставимая отчётность",
+            "Admon: качество данных, трафика и событий (IVT/аномалии)",
+            "На выходе: Quality Stamp, единый отчёт, арбитраж для сторон сделки",
+          ],
+          highlight: "Premium‑слой отделён формально. Standard‑слой прозрачен. Инвестиции — обоснованы.",
+          note: "Следующий шаг: согласовать периметр измеримости и критерии premium‑класса → пилот.",
+          layout: "bullets"
+        }
+      ];
+
+      const deck = document.getElementById("deck");
+      const grid = document.getElementById("grid");
+      const gridInner = document.getElementById("gridInner");
+      const total = document.getElementById("total");
+      const idxEl = document.getElementById("idx");
+      const bar = document.getElementById("bar");
+      const slideTitle = document.getElementById("slideTitle");
+
+      total.textContent = String(slides.length);
+
+      function el(html) {
+        const t = document.createElement("template");
+        t.innerHTML = html.trim();
+        return t.content.firstElementChild;
+      }
+
+      function renderSlide(s) {
+        const base = `
+          <article class="slide rounded-2xl sm:rounded-3xl border border-slate-800/60 bg-gradient-to-br from-slate-900/60 to-slate-950 p-5 sm:p-8 md:p-10 shadow-2xl shadow-black/30 touch-pan-y">
+            <div class="flex items-center gap-3 mb-4 sm:mb-6">
+              <div class="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-slate-400 leading-snug">${s.kicker ?? ""}</div>
+            </div>
+            <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] sm:leading-[1.05] mb-6 sm:mb-8">${s.h1 ?? ""}</h1>
+          </article>
+        `;
+        const root = el(base);
+
+        const body = document.createElement("div");
+        body.className = "mt-6 sm:mt-8";
+
+        if (s.layout === "title") {
+          body.innerHTML = `
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+              <div class="col-span-1 lg:col-span-7 min-w-0">
+                <ul class="space-y-3 sm:space-y-4 text-base sm:text-lg text-slate-200/90">
+                  ${(s.bullets ?? []).map(b => `<li class="flex gap-3"><span class="mt-1.5 w-2 h-2 shrink-0 rounded-full bg-indigo-300"></span><span class="min-w-0">${b}</span></li>`).join("")}
+                </ul>
+                ${s.note ? `<div class="mt-8 sm:mt-10 text-xs sm:text-sm text-slate-400">${s.note}</div>` : ""}
+              </div>
+              <div class="col-span-1 lg:col-span-5">
+                <div class="rounded-2xl border border-slate-800/60 bg-slate-950/40 p-6 sm:p-8">
+                  <div class="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-indigo-300 mb-2">Итог</div>
+                  <div class="text-lg sm:text-xl font-semibold mb-3">Единый стандарт для сторон сделки</div>
+                  <div class="text-sm text-slate-300/80 leading-relaxed">
+                    Сопоставимая отчётность и обоснованное разделение premium и standard инвентаря.
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        if (s.layout === "bullets") {
+          body.innerHTML = `
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+              <div class="col-span-1 lg:col-span-7 min-w-0">
+                <ul class="space-y-3 sm:space-y-4 text-base sm:text-lg text-slate-200/90">
+                  ${(s.bullets ?? []).map(b => `<li class="flex gap-3"><span class="mt-1.5 w-2 h-2 shrink-0 rounded-full bg-blue-300"></span><span class="min-w-0">${b}</span></li>`).join("")}
+                </ul>
+                ${s.note ? `<div class="mt-8 sm:mt-10 text-xs sm:text-sm text-slate-400">${s.note}</div>` : ""}
+              </div>
+              <div class="col-span-1 lg:col-span-5 min-w-0">
+                ${s.highlight ? `
+                  <div class="rounded-2xl border border-slate-800/60 bg-slate-950/40 p-6 sm:p-8">
+                    <div class="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-indigo-300 mb-2">Ключевой результат</div>
+                    <div class="text-base sm:text-lg font-semibold leading-relaxed">${s.highlight}</div>
+                  </div>
+                ` : (s.asideText ? `
+                  <div class="rounded-2xl border border-slate-800/60 bg-slate-950/40 p-6 sm:p-8">
+                    <div class="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-slate-400 mb-2">${s.asideKicker ?? "Почему сейчас"}</div>
+                    <div class="text-sm text-slate-300/80 leading-relaxed">
+                      ${s.asideText}
+                    </div>
+                  </div>
+                ` : "")}
+              </div>
+            </div>
+          `;
+        }
+
+        if (s.layout === "cards") {
+          body.innerHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              ${(s.blocks ?? []).map(b => `
+                <div class="rounded-2xl border border-slate-800/60 bg-slate-950/40 p-5 sm:p-7">
+                  <div class="text-base sm:text-lg font-semibold mb-2">${b.h}</div>
+                  <div class="text-sm text-slate-300/80 leading-relaxed">${b.p}</div>
+                </div>
+              `).join("")}
+            </div>
+            ${s.chips ? `
+              <div class="mt-10 flex flex-wrap gap-2">
+                ${s.chips.map(c => `<span class="px-3 py-1 rounded-full border border-slate-800/60 bg-slate-950/30 text-sm text-slate-300/90">${c}</span>`).join("")}
+              </div>
+            ` : ""}
+          `;
+        }
+
+        if (s.layout === "split") {
+          body.innerHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              ${s.split.map(col => `
+                <div class="rounded-2xl border border-slate-800/60 bg-slate-950/40 p-6 sm:p-8">
+                  <div class="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-indigo-300 mb-3 leading-snug">${col.h}</div>
+                  <ul class="space-y-3 text-sm text-slate-300/90 leading-relaxed">
+                    ${col.bullets.map(b => `<li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-indigo-300"></span><span>${b}</span></li>`).join("")}
+                  </ul>
+                </div>
+              `).join("")}
+            </div>
+          `;
+        }
+
+        if (s.layout === "steps") {
+          body.innerHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              ${(s.steps ?? []).map(st => `
+                <div class="rounded-2xl border border-slate-800/60 bg-slate-950/40 p-6 sm:p-8">
+                  <div class="text-4xl sm:text-5xl font-bold tabular-nums tracking-tight text-indigo-300 mb-3">${st.n}</div>
+                  <div class="text-lg sm:text-xl font-semibold mb-2">${st.h}</div>
+                  <div class="text-sm text-slate-300/80 leading-relaxed">${st.p}</div>
+                </div>
+              `).join("")}
+            </div>
+          `;
+        }
+
+        if (s.layout === "pricing") {
+          body.innerHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              ${s.pricing.map((p, i) => `
+                <div class="rounded-2xl border ${i === 1 ? "border-indigo-400/40 bg-gradient-to-br from-indigo-500/10 to-slate-950/40" : "border-slate-800/60 bg-slate-950/40"} p-6 sm:p-8">
+                  <div class="text-base sm:text-lg font-semibold mb-2">${p.h}</div>
+                  <div class="text-sm text-slate-300/80 leading-relaxed">${p.p}</div>
+                </div>
+              `).join("")}
+            </div>
+          `;
+        }
+
+        root.appendChild(body);
+        return root;
+      }
+
+      const slideEls = slides.map((s, i) => {
+        const n = renderSlide(s);
+        n.dataset.index = String(i);
+        deck.appendChild(n);
+        return n;
+      });
+
+      function renderGrid() {
+        gridInner.innerHTML = "";
+        slides.forEach((s, i) => {
+          const card = el(`
+            <button class="text-left rounded-2xl border border-slate-800/60 bg-slate-950/40 p-6 hover:bg-slate-900/40 transition-colors">
+              <div class="text-xs text-slate-400 mb-2">${String(i + 1).padStart(2, "0")} • ${s.kicker ?? ""}</div>
+              <div class="font-semibold leading-snug">${s.title}</div>
+              <div class="mt-3 text-sm text-slate-300/80 line-clamp-3">${s.h1 ?? ""}</div>
+            </button>
+          `);
+          card.addEventListener("click", () => {
+            hideGrid();
+            go(i);
+          });
+          gridInner.appendChild(card);
+        });
+      }
+
+      let index = 0;
+      function go(i) {
+        index = Math.max(0, Math.min(slideEls.length - 1, i));
+        slideEls.forEach((n) => n.classList.remove("is-active"));
+        slideEls[index].classList.add("is-active");
+        idxEl.textContent = String(index + 1);
+        bar.style.width = `${((index + 1) / slideEls.length) * 100}%`;
+        slideTitle.textContent = slides[index].title;
+        document.title = `(${index + 1}/${slides.length}) ${slides[index].title} — Quality Reach`;
+      }
+
+      function next() { go(index + 1); }
+      function prev() { go(index - 1); }
+
+      function showGrid() {
+        renderGrid();
+        grid.classList.remove("hidden");
+      }
+      function hideGrid() { grid.classList.add("hidden"); }
+
+      document.getElementById("next").addEventListener("click", next);
+      document.getElementById("prev").addEventListener("click", prev);
+      document.getElementById("closeGrid").addEventListener("click", hideGrid);
+
+      document.addEventListener("keydown", (e) => {
+        if (grid && !grid.classList.contains("hidden")) {
+          if (e.key === "Escape") hideGrid();
+          return;
+        }
+
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); next(); }
+        if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+        if (e.key.toLowerCase() === "g") showGrid();
+        if (e.key === "Escape") { /* noop */ }
+        if (e.key.toLowerCase() === "f") {
+          if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+          else document.exitFullscreen?.();
+        }
+      });
+
+      go(0);
+
+      (function () {
+        const deckEl = document.getElementById("deck");
+        if (!deckEl) return;
+        let touchStartX = 0;
+        let touchStartY = 0;
+        deckEl.addEventListener(
+          "touchstart",
+          (e) => {
+            const t = e.changedTouches && e.changedTouches[0];
+            if (!t) return;
+            touchStartX = t.clientX;
+            touchStartY = t.clientY;
+          },
+          { passive: true }
+        );
+        deckEl.addEventListener(
+          "touchend",
+          (e) => {
+            const t = e.changedTouches && e.changedTouches[0];
+            if (!t) return;
+            const dx = t.clientX - touchStartX;
+            const dy = t.clientY - touchStartY;
+            if (Math.abs(dx) < 56 || Math.abs(dx) < Math.abs(dy)) return;
+            if (dx < 0) next();
+            else prev();
+          },
+          { passive: true }
+        );
+      })();
+    </script>
+  </body>
+</html>
+

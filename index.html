@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<title>Quality Reach OLV | Admon × Mediascope</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#b1c5ff",
+                        "outline-variant": "#424654",
+                        "primary": "#b1c5ff",
+                        "tertiary-container": "#af8b47",
+                        "tertiary-fixed": "#ffdea5",
+                        "on-secondary-container": "#003114",
+                        "secondary": "#5adf85",
+                        "primary-container": "#598cff",
+                        "on-tertiary": "#412d00",
+                        "surface-container-low": "#131b2e",
+                        "on-secondary-fixed-variant": "#005226",
+                        "background": "#0b1326",
+                        "on-tertiary-container": "#382700",
+                        "on-secondary": "#003918",
+                        "surface-bright": "#31394d",
+                        "on-primary-container": "#002663",
+                        "on-surface-variant": "#c3c6d6",
+                        "tertiary-fixed-dim": "#e9c176",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#79fc9f",
+                        "primary-fixed-dim": "#b1c5ff",
+                        "on-tertiary-fixed-variant": "#5d4201",
+                        "surface-container-lowest": "#060e20",
+                        "surface-variant": "#2d3449",
+                        "surface-container-high": "#222a3d",
+                        "surface": "#0b1326",
+                        "inverse-surface": "#dae2fd",
+                        "primary-fixed": "#dae2ff",
+                        "secondary-container": "#02a754",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#5adf85",
+                        "surface-dim": "#0b1326",
+                        "on-surface": "#dae2fd",
+                        "on-tertiary-fixed": "#261900",
+                        "on-secondary-fixed": "#00210c",
+                        "tertiary": "#e9c176",
+                        "on-background": "#dae2fd",
+                        "outline": "#8c909f",
+                        "inverse-primary": "#0057ce",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#2d3449",
+                        "on-primary": "#002c71",
+                        "surface-container": "#171f33",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#001946",
+                        "inverse-on-surface": "#283044",
+                        "on-primary-fixed-variant": "#00419e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { overflow-x: hidden; }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-[#0b1326]/60 backdrop-blur-md bg-gradient-to-b from-[#131b2e] to-transparent shadow-[0_20px_50px_rgba(6,14,32,0.6)]">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 py-4 md:py-6 flex justify-between items-center gap-3">
+<div class="text-lg sm:text-xl font-bold tracking-tighter text-[#dae2fd] dark:text-[#dae2fd] antialiased shrink-0">
+                Quality Reach OLV
+            </div>
+<div class="hidden md:flex gap-8 lg:gap-10 font-['Inter'] tracking-tight antialiased">
+<a class="text-[#b1c5ff] border-b-2 border-[#b1c5ff] pb-1 hover:text-[#dae2fd] transition-all duration-300 ease-in-out" href="#product">Продукт</a>
+<a class="text-[#c3c6d6] hover:text-[#dae2fd] transition-all duration-300 ease-in-out" href="#how">Как работает</a>
+<a class="text-[#c3c6d6] hover:text-[#dae2fd] transition-all duration-300 ease-in-out" href="#pricing">Пакеты</a>
+<a class="text-[#c3c6d6] hover:text-[#dae2fd] transition-all duration-300 ease-in-out" href="#faq">FAQ</a>
+</div>
+<div class="flex items-center gap-2 sm:gap-4 md:gap-6 shrink-0">
+<a class="hidden sm:inline text-[#c3c6d6] hover:text-[#dae2fd] transition-colors font-medium text-sm" href="#contact">Вход</a>
+<a class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-3 py-2 sm:px-6 sm:py-2.5 rounded-xl text-sm sm:text-base font-semibold active:scale-95 transition-transform duration-300 whitespace-nowrap" href="#contact">
+                    Демо
+                </a>
+<button type="button" id="nav-toggle" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-outline-variant/40 text-on-surface hover:bg-surface-container-high" aria-expanded="false" aria-controls="nav-mobile" aria-label="Открыть меню">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</div>
+</div>
+<div id="nav-mobile" class="hidden md:hidden border-t border-outline-variant/20 bg-[#0b1326]/95 backdrop-blur-md">
+<div class="max-w-[1440px] mx-auto px-4 py-4 flex flex-col gap-1 font-['Inter']">
+<a class="text-[#b1c5ff] py-3 border-b border-outline-variant/15" href="#product">Продукт</a>
+<a class="text-[#c3c6d6] py-3 border-b border-outline-variant/15" href="#how">Как работает</a>
+<a class="text-[#c3c6d6] py-3 border-b border-outline-variant/15" href="#pricing">Пакеты</a>
+<a class="text-[#c3c6d6] py-3 border-b border-outline-variant/15" href="#faq">FAQ</a>
+<a class="text-[#c3c6d6] py-3" href="#contact">Вход</a>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="pt-28 sm:pt-36 md:pt-48 pb-16 md:pb-32 px-4 sm:px-6 lg:px-12 max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center" id="top">
+<div class="col-span-1 lg:col-span-6">
+<div class="flex flex-wrap gap-3 mb-6 md:mb-8">
+<span class="bg-secondary-container text-on-secondary-fixed text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-widest">Admon</span>
+<span class="bg-primary-container text-on-primary-fixed text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-widest">Mediascope</span>
+</div>
+<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tighter text-on-surface leading-[1.05] mb-6 md:mb-8">
+                    Единый стандарт измерения<br/><span class="text-primary">видеоконтента в OLV</span>
+</h1>
+<p class="text-base sm:text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed mb-8 md:mb-10">
+                    Quality Reach OLV объединяет измерение Mediascope и проверку качества Admon в единый стандарт для OLV‑инвентаря. Без него premium‑цена часто дополняется скрытыми расходами: переплата за неподтверждённый слой, post‑buying арбитраж и ручные сверки. Результат — прозрачная закупка, Quality Stamp и единый отчёт.
+                </p>
+<div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+<a class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-bold text-base sm:text-lg text-center shadow-xl shadow-primary-container/20" href="#contact">
+                        Запросить демо
+                    </a>
+<a class="border border-outline-variant/30 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-semibold text-center hover:bg-surface-container-high transition-colors" href="#product">
+                        О продукте
+                    </a>
+</div>
+</div>
+<div class="col-span-1 lg:col-span-6 relative">
+<div class="bg-surface-container-low p-5 sm:p-8 rounded-xl border border-surface-bright/20 shadow-2xl overflow-hidden">
+<div class="flex items-center justify-between mb-8">
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+</div>
+<span class="text-xs font-mono text-outline">QUALITY_REACH_OLV.V1</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="bg-surface-container p-6 rounded-lg border-t border-surface-bright/20">
+<span class="text-xs text-on-surface-variant font-medium block mb-1">IVT / SIVT</span>
+<div class="text-3xl font-bold text-secondary">99.2%</div>
+<div class="w-full bg-surface-container-low h-1.5 mt-3 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[99.2%]"></div>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-lg border-t border-surface-bright/20">
+<span class="text-xs text-on-surface-variant font-medium block mb-1">Brand Safety</span>
+<div class="text-3xl font-bold text-primary">A+</div>
+<div class="w-full bg-surface-container-low h-1.5 mt-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[88%]"></div>
+</div>
+</div>
+<div class="sm:col-span-2 bg-surface-container p-6 rounded-lg border-t border-surface-bright/20 relative overflow-hidden">
+<div class="flex justify-between items-end gap-4">
+<div class="min-w-0">
+<span class="text-xs text-on-surface-variant font-medium block mb-1">OLV — измеримый контур</span>
+<div class="text-4xl font-bold text-tertiary">84.5%</div>
+</div>
+<div class="flex gap-1 h-12 items-end shrink-0">
+<div class="w-2 bg-outline-variant/20 h-[30%]"></div>
+<div class="w-2 bg-outline-variant/20 h-[50%]"></div>
+<div class="w-2 bg-primary/40 h-[70%]"></div>
+<div class="w-2 bg-primary h-[100%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative element -->
+<div class="absolute -z-10 -bottom-10 -right-10 w-64 h-64 bg-primary-container/10 blur-[100px] rounded-full"></div>
+</div>
+</section>
+<!-- Product Overview -->
+<section class="py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 max-w-[1200px] mx-auto" id="product">
+<span class="text-tertiary font-mono tracking-widest text-xs uppercase mb-4 block">Product</span>
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 md:mb-6 leading-tight">OLV‑инвентарь: измерение и контроль качества</h2>
+<div class="text-on-surface-variant text-base sm:text-lg leading-relaxed max-w-3xl mb-10 md:mb-12 space-y-4">
+<p>Единый продукт: измерение OLV по правилам Mediascope и проверка качества инвентаря Admon.</p>
+<p>Один контур для бренда, агентства и площадки: сопоставимая отчётность, меньше посткампейных споров, отделение premium-инвентаря от standard.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
+<div class="bg-surface-container-low rounded-2xl p-6 sm:p-8 border border-surface-bright/10 flex flex-col h-full">
+<div class="text-xs uppercase tracking-[0.2em] text-primary mb-4">Аудитория</div>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li class="flex gap-3"><span class="material-symbols-outlined text-secondary shrink-0">target</span><span><span class="text-on-surface font-medium">Бренды</span> — обоснованная премиальная OLV-закупка</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-secondary shrink-0">groups</span><span><span class="text-on-surface font-medium">Агентства</span> — единые метрики и согласованная отчётность для клиента</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-secondary shrink-0">hub</span><span><span class="text-on-surface font-medium">Площадки</span> — верифицированный инвентарь как отдельное предложение</span></li>
+</ul>
+</div>
+<div class="flex flex-col gap-6 min-w-0">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-container-low p-6 sm:p-8 rounded-2xl border border-surface-bright/10 h-full flex flex-col">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">shield</span>
+<div class="font-bold">Admon</div>
+</div>
+<ul class="space-y-3 text-sm text-on-surface-variant">
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary shrink-0 text-lg">check_circle</span><span>Валидация событий и инвентаря</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary shrink-0 text-lg">check_circle</span><span>Контроль трафика и сигналов риска</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary shrink-0 text-lg">check_circle</span><span>Quality Stamp для подтверждённого инвентаря</span></li>
+</ul>
+</div>
+<div class="bg-surface-container-low p-6 sm:p-8 rounded-2xl border border-surface-bright/10 h-full flex flex-col">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-tertiary">verified</span>
+<div class="font-bold">Mediascope</div>
+</div>
+<ul class="space-y-3 text-sm text-on-surface-variant">
+<li class="flex gap-3"><span class="material-symbols-outlined text-tertiary shrink-0 text-lg">check_circle</span><span>OLV по методологии Mediascope</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-tertiary shrink-0 text-lg">check_circle</span><span>Фиксация измеряемого контура</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-tertiary shrink-0 text-lg">check_circle</span><span>Отчётность в привычном для рынка формате</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-surface-container p-6 sm:p-8 rounded-2xl border border-surface-bright/10 relative overflow-hidden">
+<div class="flex flex-col sm:flex-row items-start justify-between gap-4">
+<div class="min-w-0 relative z-10">
+<div class="text-xs uppercase tracking-[0.2em] text-primary mb-2">На выходе</div>
+<div class="text-xl sm:text-2xl font-bold mb-2">Quality Stamp и единый отчёт</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Верифицируемый инвентарь: зафиксированные критерии, сопоставимая отчётность для сторон сделки.</p>
+</div>
+<span class="material-symbols-outlined text-primary text-4xl opacity-50 shrink-0 hidden sm:block relative z-10">description</span>
+</div>
+<div class="absolute -bottom-24 -right-24 w-64 h-64 bg-primary/10 blur-[70px] rounded-full pointer-events-none"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Market Problems -->
+<section class="bg-surface-container-low py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-12">
+<div class="max-w-[1440px] mx-auto">
+<div class="flex flex-col items-center mb-10 md:mb-20 text-center px-1">
+<span class="text-tertiary font-mono tracking-widest text-xs uppercase mb-4">Market Challenges</span>
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight max-w-3xl">Видео без единой системы координат</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+<div class="bg-surface-container p-6 sm:p-10 rounded-xl hover:bg-surface-container-high transition-all duration-500 group">
+<span class="material-symbols-outlined text-error text-4xl mb-6 block">security_update_warning</span>
+<h3 class="text-2xl font-bold mb-4">Невалидный трафик</h3>
+<p class="text-on-surface-variant leading-relaxed">Потери бюджета и дополнительные затраты на разбор: события не сходятся, качество не подтверждено.</p>
+</div>
+<div class="bg-surface-container p-6 sm:p-10 rounded-xl hover:bg-surface-container-high transition-all duration-500">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-6 block">visibility_off</span>
+<h3 class="text-2xl font-bold mb-4">Хаос отчётности</h3>
+<p class="text-on-surface-variant leading-relaxed">Разные системы отчёта → часы команды на сверки и конфликт по результату после кампании.</p>
+</div>
+<div class="bg-surface-container p-6 sm:p-10 rounded-xl hover:bg-surface-container-high transition-all duration-500">
+<span class="material-symbols-outlined text-secondary text-4xl mb-6 block">gpp_maybe</span>
+<h3 class="text-2xl font-bold mb-4">Кросс‑устройства</h3>
+<p class="text-on-surface-variant leading-relaxed">Для рекламодателя важна эффективность канала, а не устройство: web, app, Smart TV/OTT.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Synergy Section (Asymmetric) -->
+<section class="py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 max-w-[1440px] mx-auto overflow-hidden" id="synergy">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+<div class="col-span-1 lg:col-span-5">
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6 md:mb-8 leading-tight">Два слоя контроля — одна логика</h2>
+<p class="text-on-surface-variant text-base sm:text-lg leading-relaxed mb-8">
+                        Mediascope задаёт правила измерения. Admon подтверждает качество инвентаря. Совместно — сопоставимый результат и явное разделение premium и standard инвентаря.
+                    </p>
+<ul class="space-y-6">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+<div class="text-on-surface font-medium leading-snug">Admon: события, трафик, сигналы риска</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+<div class="text-on-surface font-medium leading-snug">Mediascope: методология и отчётность</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+<div class="text-on-surface font-medium leading-snug">Итог: статус инвентаря и единый отчёт</div>
+</li>
+</ul>
+<div class="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
+<a class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-3.5 rounded-xl font-bold text-base text-center shadow-xl shadow-primary-container/20" href="#contact">Запросить демо</a>
+<a class="border border-outline-variant/30 px-6 py-3.5 rounded-xl font-semibold text-center hover:bg-surface-container-high transition-colors" href="#methodology">Посмотреть методологию</a>
+</div>
+</div>
+<div class="col-span-1 lg:col-span-7 relative">
+<div class="aspect-video bg-surface-container-high rounded-xl overflow-hidden flex items-center justify-center p-1 min-h-[200px]">
+<img class="w-full h-full object-cover opacity-60 mix-blend-luminosity grayscale" data-alt="abstract architectural visual of data lines connecting two massive monolithic structures in a deep navy and neon blue aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcA_DrrnTAaJB0Wxjc7UakEs0enKeFQ4o0UfJnQgFV6Wn_opfWKxSnUH6klo3YUSaAILXCbDZqMNMNKyB1UinSHgyiHRNm6JcS3e_GSHffhnS_R3_vveD3K_aNrBrbHK-wvrE_6h-2nugh01E-NIZ2ZVMaF2QmdBRpkMI3Ta7BVUs0L7oM8J52H5yqmF7-C2ZdTKrlBOFLL7Kon7RqzWVMoeJhETBFYH8Veu6eTO7FtyO45KbnDI0bjx42np9BpZH69hjA3oL-tNbq"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-primary/20"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-surface-container/90 backdrop-blur-xl p-5 sm:p-8 rounded-2xl border border-surface-bright/30 max-w-md mx-4 text-center">
+<div class="text-base sm:text-lg font-bold leading-snug">Единый стандарт видеоконтакта</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="bg-surface-container-low py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-12" id="how">
+<div class="max-w-6xl mx-auto w-full">
+<div class="mb-10 md:mb-14 text-center max-w-2xl mx-auto">
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 px-2">Этапы проверки инвентаря</h2>
+<p class="text-on-surface-variant text-sm sm:text-base px-2">Подключение → проверка Admon → измерение Mediascope → отчёт и Quality Stamp.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+<div class="flex flex-col h-full rounded-xl border border-surface-bright/20 bg-surface-container-lowest p-6 sm:p-7 shadow-sm">
+<div class="text-3xl sm:text-4xl font-bold tabular-nums text-primary mb-3 leading-none tracking-tight">01</div>
+<h4 class="text-lg font-bold mb-2 text-on-surface">Подключение</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Состав инвентаря и правила измерения — в согласованном периметре.</p>
+</div>
+<div class="flex flex-col h-full rounded-xl border border-surface-bright/20 bg-surface-container-lowest p-6 sm:p-7 shadow-sm">
+<div class="text-3xl sm:text-4xl font-bold tabular-nums text-secondary mb-3 leading-none tracking-tight">02</div>
+<h4 class="text-lg font-bold mb-2 text-on-surface">Проверка Admon</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">События, трафик, индикаторы фрода и аномалий.</p>
+</div>
+<div class="flex flex-col h-full rounded-xl border border-surface-bright/20 bg-surface-container-lowest p-6 sm:p-7 shadow-sm">
+<div class="text-3xl sm:text-4xl font-bold tabular-nums text-tertiary mb-3 leading-none tracking-tight">03</div>
+<h4 class="text-lg font-bold mb-2 text-on-surface">Измерение Mediascope</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">OLV по согласованной методике, данные для отчёта.</p>
+</div>
+<div class="flex flex-col h-full rounded-xl border border-surface-bright/20 bg-surface-container-lowest p-6 sm:p-7 shadow-sm">
+<div class="text-3xl sm:text-4xl font-bold tabular-nums text-primary-container mb-3 leading-none tracking-tight">04</div>
+<h4 class="text-lg font-bold mb-2 text-on-surface">Отчёт и Quality Stamp</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Итоговый статус инвентаря и единый отчёт для сторон сделки.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Methodology + Output -->
+<section class="py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 max-w-[1440px] mx-auto" id="methodology">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+<div class="col-span-1 lg:col-span-5">
+<span class="text-tertiary font-mono tracking-widest text-xs uppercase mb-4 block">Methodology</span>
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6 md:mb-8 leading-tight">Методология и отчёт</h2>
+<p class="text-on-surface-variant text-base sm:text-lg leading-relaxed mb-8 md:mb-10">
+Mediascope определяет правила измерения OLV — единый стандарт видеоконтакта для разных устройств. Admon валидирует инвентарь и качество данных. Клиент получает Quality Stamp и единый отчёт — для внутренней аналитики, оценки кампании и работы с площадкой.
+</p>
+<div class="space-y-5">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary">gpp_good</span>
+<div>
+<div class="font-bold mb-1">Контроль фрода</div>
+<div class="text-sm text-on-surface-variant">Аномалии и расхождения — до финальной оценки.</div>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-tertiary">visibility</span>
+<div>
+<div class="font-bold mb-1">Измеряемый контур OLV</div>
+<div class="text-sm text-on-surface-variant">Форматы и правила учёта (в т.ч. midroll/postroll) — для сопоставимых сравнений.</div>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary">shield_lock</span>
+<div>
+<div class="font-bold mb-1">Quality Stamp</div>
+<div class="text-sm text-on-surface-variant">Только при согласовании результатов измерения и проверки.</div>
+</div>
+</div>
+<div class="text-xs text-on-surface-variant/80 leading-relaxed border-t border-outline-variant/20 pt-5">
+*Иллюстративные пороги. Правила и метрики задаются под вашу закупочную модель.*
+</div>
+</div>
+</div>
+<div class="col-span-1 lg:col-span-7 min-w-0">
+<div class="bg-surface-container-low rounded-2xl border border-surface-bright/10 overflow-hidden">
+<div class="p-5 sm:p-8 md:p-10 border-b border-outline-variant/10">
+<div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-8">
+<div class="min-w-0">
+<div class="text-xs uppercase tracking-[0.2em] text-primary mb-2">Пример структуры отчёта</div>
+<div class="text-2xl sm:text-3xl font-bold mb-2">Quality Reach OLV Report</div>
+<div class="text-sm text-on-surface-variant">Трафик, измерение, окружение, итог — один документ.</div>
+</div>
+<div class="text-xs font-mono text-outline shrink-0">REPORT.V1 • PDF / Dashboard / API</div>
+</div>
+</div>
+<div class="p-5 sm:p-8 md:p-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/10">
+<div class="text-sm font-semibold text-on-surface mb-1">IVT / Fraud Check</div>
+<div class="text-xl font-bold text-secondary">Сводка по источникам</div>
+<div class="mt-4 space-y-2 text-sm text-on-surface-variant">
+<div class="flex justify-between"><span>Web</span><span class="text-on-surface font-semibold">ОК</span></div>
+<div class="flex justify-between"><span>In‑app</span><span class="text-on-surface font-semibold">ОК</span></div>
+<div class="flex justify-between"><span>Video/CTV</span><span class="text-on-surface font-semibold">ОК</span></div>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/10">
+<div class="text-sm font-semibold text-on-surface mb-1">Premium Verified OLV</div>
+<div class="text-4xl font-extrabold tracking-tighter text-primary mb-2">QR</div>
+<div class="text-sm text-on-surface-variant">Итоговый статус качества охвата</div>
+</div>
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/10">
+<div class="text-sm font-semibold text-on-surface mb-1">Viewability Assessment</div>
+<div class="text-xl font-bold text-tertiary">Пороговые значения и фактические показатели</div>
+<div class="mt-4 space-y-2 text-sm text-on-surface-variant">
+<div class="flex justify-between"><span>Видимые показы</span><span class="text-on-surface font-semibold">…</span></div>
+<div class="flex justify-between"><span>Невидимые</span><span class="text-on-surface font-semibold">…</span></div>
+<div class="flex justify-between"><span>Сомнительные</span><span class="text-on-surface font-semibold">…</span></div>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/10">
+<div class="text-sm font-semibold text-on-surface mb-1">Brand Safety Map</div>
+<div class="text-xl font-bold">Карта рисков по окружению</div>
+<div class="mt-4 flex gap-2">
+<div class="h-2 flex-1 bg-secondary/50 rounded-full"></div>
+<div class="h-2 flex-1 bg-tertiary/50 rounded-full"></div>
+<div class="h-2 flex-1 bg-error/50 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- KPI Metrics (High Impact) -->
+<section class="py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 max-w-[1440px] mx-auto">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center">
+<div class="space-y-2">
+<div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary tracking-tighter">99.2%</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant font-bold leading-snug max-w-[11rem] sm:max-w-none mx-auto">Трафика без IVT/SIVT</div>
+</div>
+<div class="space-y-2">
+<div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-secondary tracking-tighter">84.5%</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant font-bold leading-snug max-w-[12rem] sm:max-w-none mx-auto">Инвентарь в измеримом контуре</div>
+</div>
+<div class="space-y-2">
+<div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-tertiary tracking-tighter">A+</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant font-bold">Уровень Brand Safety</div>
+</div>
+<div class="space-y-2">
+<div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary-fixed-dim tracking-tighter">1 отчёт</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant font-bold leading-snug max-w-[14rem] sm:max-w-none mx-auto">По качеству и измерению</div>
+</div>
+</div>
+</section>
+<!-- Target Segments -->
+<section class="bg-surface px-4 sm:px-6 lg:px-12 py-16 md:py-24 lg:py-32">
+<div class="max-w-[1440px] mx-auto border-y border-outline-variant/10 py-12 md:py-24">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+<div class="col-span-1 lg:col-span-4">
+<h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">Роль сторон сделки</h2>
+</div>
+<div class="col-span-1 lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-6 rounded-lg">
+<div class="text-primary font-bold mb-4 uppercase text-xs tracking-widest">Бренды</div>
+<p class="text-sm leading-relaxed">Обоснованная премиальная OLV-закупка.</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg">
+<div class="text-secondary font-bold mb-4 uppercase text-xs tracking-widest">Агентства</div>
+<p class="text-sm leading-relaxed">Единые цифры и методология для клиента.</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg">
+<div class="text-tertiary font-bold mb-4 uppercase text-xs tracking-widest">Платформы</div>
+<p class="text-sm leading-relaxed">Верифицированный инвентарь — отдельное коммерческое предложение.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing -->
+<section class="py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 max-w-[1440px] mx-auto" id="pricing">
+<div class="text-center mb-10 md:mb-16 px-2">
+<span class="text-tertiary font-mono tracking-widest text-xs uppercase mb-4 block">Monetization</span>
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">Форматы подключения Quality Reach OLV</h2>
+<p class="text-on-surface-variant text-sm sm:text-base max-w-3xl mx-auto">Пилот, базовый продукт или enterprise. Коммерческая модель — по конфигурации: аудит, комиссия, доля от объёма или premium markup к CPM.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 lg:items-stretch">
+<div class="bg-surface-container-low p-6 sm:p-10 rounded-2xl border border-outline-variant/10 flex flex-col min-h-0 lg:h-full lg:self-stretch">
+<div class="text-xs uppercase tracking-[0.2em] text-on-surface-variant mb-2">Pilot</div>
+<div class="text-3xl font-bold mb-3">Пилот OLV</div>
+<p class="text-sm text-on-surface-variant mb-8 leading-relaxed">Ограниченный объём закупки: согласование контура измерения, правил проверки и формата отчёта.</p>
+<ul class="space-y-3 text-sm text-on-surface-variant flex-1 min-h-0">
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary shrink-0">check_circle</span><span>Периметр измеряемого OLV и правила premium / standard</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary shrink-0">check_circle</span><span>Quality Stamp и итоговый отчет по пилоту</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary shrink-0">check_circle</span><span>Запуск за несколько дней</span></li>
+</ul>
+<div class="mt-auto pt-8 shrink-0 w-full">
+<a class="flex w-full min-h-[3rem] items-center justify-center rounded-xl border border-outline-variant/25 bg-surface-container-high px-6 text-sm font-semibold text-on-surface shadow-sm transition-all hover:border-outline-variant/50 hover:bg-surface-container focus-visible:outline focus-visible:ring-2 focus-visible:ring-primary/40" href="#contact">Запросить пилот</a>
+</div>
+</div>
+<div class="bg-gradient-to-br from-primary-container/25 to-surface-container p-6 sm:p-10 rounded-2xl border border-primary/20 shadow-2xl shadow-primary-container/10 relative overflow-hidden flex flex-col min-h-0 lg:h-full lg:self-stretch">
+<div class="absolute -top-24 -right-24 w-72 h-72 bg-primary/10 blur-[90px] rounded-full pointer-events-none"></div>
+<div class="text-xs uppercase tracking-[0.2em] text-primary mb-2 relative z-10">Core</div>
+<div class="text-3xl font-bold mb-3 relative z-10">Подтвержденный премиум-уровень</div>
+<p class="text-sm text-on-surface-variant mb-8 leading-relaxed relative z-10">Верифицированный OLV‑инвентарь, premium-маркировка, согласованная коммерческая модель.</p>
+<ul class="space-y-3 text-sm text-on-surface-variant flex-1 min-h-0 relative z-10">
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary shrink-0">check_circle</span><span>Premium-маркировка Quality Stamp</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary shrink-0">check_circle</span><span>Единая отчетность для агентства, клиента и продавца</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary shrink-0">check_circle</span><span>Модель оплаты: процент от объема или premium markup к CPM</span></li>
+</ul>
+<div class="relative z-10 mt-auto pt-8 shrink-0 w-full">
+<a class="flex w-full min-h-[3rem] items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-container px-6 text-sm font-bold text-on-primary shadow-lg shadow-primary/25 transition-all hover:brightness-110 hover:shadow-xl active:scale-[0.98] focus-visible:outline focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container" href="#contact">Обсудить подключение</a>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 sm:p-10 rounded-2xl border border-outline-variant/10 flex flex-col min-h-0 lg:h-full lg:self-stretch">
+<div class="text-xs uppercase tracking-[0.2em] text-on-surface-variant mb-2">Enterprise</div>
+<div class="text-3xl font-bold mb-3">Корпоративное подключение</div>
+<p class="text-sm text-on-surface-variant mb-8 leading-relaxed">Крупные контракты: SLA, BI, отчётные контуры, кастомные правила premium-классов.</p>
+<ul class="space-y-3 text-sm text-on-surface-variant flex-1 min-h-0">
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary shrink-0">check_circle</span><span>Выделенная поддержка и SLA</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary shrink-0">check_circle</span><span>Кастомные правила маркировки и сегментации инвентаря</span></li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-primary shrink-0">check_circle</span><span>Интеграции в BI и расширенный контур сверки</span></li>
+</ul>
+<div class="mt-auto pt-8 shrink-0 w-full">
+<a class="flex w-full min-h-[3rem] items-center justify-center rounded-xl border border-outline-variant/25 bg-surface-container-high px-6 text-sm font-semibold text-on-surface shadow-sm transition-all hover:border-outline-variant/50 hover:bg-surface-container focus-visible:outline focus-visible:ring-2 focus-visible:ring-primary/40" href="#contact">Обсудить enterprise</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Commercial Benefits -->
+<section class="py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-12 max-w-[1440px] mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+<div class="bg-surface-container-low rounded-2xl p-6 sm:p-10 md:p-12 relative overflow-hidden order-2 lg:order-1">
+<div class="relative z-10">
+<h3 class="text-3xl font-bold mb-6">Бизнес-эффект</h3>
+<div class="space-y-8">
+<div class="flex gap-6">
+<div class="bg-primary/10 p-3 rounded-lg h-fit">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+</div>
+<div>
+<h4 class="font-bold mb-2">Экономия бюджета</h4>
+<p class="text-sm text-on-surface-variant">Меньше потерь на фроде, сомнительном трафике и некачественном инвентаре.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="bg-secondary/10 p-3 rounded-lg h-fit">
+<span class="material-symbols-outlined text-secondary">visibility</span>
+</div>
+<div>
+<h4 class="font-bold mb-2">Прозрачность закупки</h4>
+<p class="text-sm text-on-surface-variant">Единые правила измерения и проверки — основа для оценки инвентаря и результата кампании.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute -top-10 -right-10 opacity-5">
+<span class="material-symbols-outlined text-[300px]">monetization_on</span>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6 md:mb-8">Единый стандарт оценки инвентаря</h2>
+<p class="text-on-surface-variant text-base sm:text-lg leading-relaxed mb-6">
+Mediascope — правила измерения. Admon — качество инвентаря.
+</p>
+<p class="text-on-surface-variant text-base sm:text-lg leading-relaxed">
+Меньше споров после кампании. Прозрачнее отчётность. Яснее ценность инвентаря.
+</p>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-16 md:py-24 lg:py-32 bg-surface-container-low px-4 sm:px-6 lg:px-12" id="faq">
+<div class="max-w-[800px] mx-auto">
+<h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-8 md:mb-12 text-center px-2">Часто задаваемые вопросы</h2>
+<div class="space-y-4">
+<div class="bg-surface-container rounded-xl overflow-hidden border border-outline-variant/10" data-faq-item="true">
+<button class="w-full p-4 sm:p-6 flex justify-between items-center gap-3 hover:bg-surface-container-high transition-colors text-left" type="button">
+<span class="font-semibold text-left text-sm sm:text-base pr-2">Сроки внедрения</span>
+<span class="material-symbols-outlined text-outline transition-transform duration-200">expand_more</span>
+</button>
+<div class="px-4 sm:px-6 pb-4 sm:pb-6 text-sm text-on-surface-variant hidden">
+Пилот — от нескольких дней: теги/SDK или server-to-server, согласование источников и порогов, затем сбор сигналов и отчётность. Сроки зависят от периметра.
+</div>
+</div>
+<div class="bg-surface-container rounded-xl overflow-hidden border border-outline-variant/10" data-faq-item="true">
+<button class="w-full p-4 sm:p-6 flex justify-between items-center gap-3 hover:bg-surface-container-high transition-colors text-left" type="button">
+<span class="font-semibold text-left text-sm sm:text-base pr-2">Форматы и каналы</span>
+<span class="material-symbols-outlined text-outline transition-transform duration-200">expand_more</span>
+</button>
+<div class="px-4 sm:px-6 pb-4 sm:pb-6 text-sm text-on-surface-variant hidden">
+Digital: web, mobile, in-app, programmatic, digital-video; CTV/OTT в рамках digital-экосистемы. Периметр фиксируется при запуске.
+</div>
+</div>
+<div class="bg-surface-container rounded-xl overflow-hidden border border-outline-variant/10" data-faq-item="true">
+<button class="w-full p-4 sm:p-6 flex justify-between items-center gap-3 hover:bg-surface-container-high transition-colors text-left" type="button">
+<span class="font-semibold text-left text-sm sm:text-base pr-2">Premium verified OLV</span>
+<span class="material-symbols-outlined text-outline transition-transform duration-200">expand_more</span>
+</button>
+<div class="px-4 sm:px-6 pb-4 sm:pb-6 text-sm text-on-surface-variant hidden">
+OLV, измеренная по правилам Mediascope и подтверждённая Admon по событиям и IVT. Разделение premium и standard инвентаря в коммерческой логике.
+</div>
+</div>
+<div class="bg-surface-container rounded-xl overflow-hidden border border-outline-variant/10" data-faq-item="true">
+<button class="w-full p-4 sm:p-6 flex justify-between items-center gap-3 hover:bg-surface-container-high transition-colors text-left" type="button">
+<span class="font-semibold text-left text-sm sm:text-base pr-2">Коммерческая модель</span>
+<span class="material-symbols-outlined text-outline transition-transform duration-200">expand_more</span>
+</button>
+<div class="px-4 sm:px-6 pb-4 sm:pb-6 text-sm text-on-surface-variant hidden">
+Аудит и/или подписка по объёму событий; enterprise — индивидуальный контракт, SLA, интеграции. Условия — после уточнения сценария.
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-16 md:py-24 lg:py-40 px-4 sm:px-6 lg:px-12" id="contact">
+<div class="max-w-[1440px] mx-auto bg-gradient-to-br from-primary-container/20 to-surface-container rounded-2xl sm:rounded-3xl p-6 sm:p-12 md:p-16 lg:p-24 text-center relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-6 md:mb-8 px-1">Запросить демо</h2>
+<p class="text-base sm:text-lg md:text-xl text-on-surface-variant mb-8 md:mb-12 max-w-2xl mx-auto px-1">
+                        Оставьте контакты — обсудим сценарий и параметры подключения Quality Reach OLV.
+                    </p>
+<div class="max-w-xl mx-auto w-full">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+<input class="bg-surface-container-low border border-outline-variant/20 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/60" placeholder="Имя" type="text"/>
+<input class="bg-surface-container-low border border-outline-variant/20 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/60" placeholder="Компания" type="text"/>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+<input class="bg-surface-container-low border border-outline-variant/20 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/60" placeholder="E-mail" type="email"/>
+<input class="bg-surface-container-low border border-outline-variant/20 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/60" placeholder="Телефон" type="tel"/>
+</div>
+<a class="inline-flex w-full justify-center bg-primary text-on-primary px-6 sm:px-12 py-4 sm:py-5 rounded-xl font-bold text-lg sm:text-xl shadow-2xl shadow-primary/30 active:scale-95 transition-transform" href="#top">
+                        Отправить запрос
+                    </a>
+<div class="text-xs text-on-surface-variant/80 mt-4 leading-relaxed">
+Нажимая «Отправить запрос», вы соглашаетесь на обработку персональных данных для связи по запросу.
+</div>
+</div>
+</div>
+<!-- Abstract patterns -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent scale-150"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-10 md:py-16 bg-[#0b1326] dark:bg-[#0b1326] border-t border-[#424654]/15">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8 font-['Inter'] text-sm tracking-wide text-[#c3c6d6]">
+<div class="flex flex-col gap-2">
+<div class="text-lg font-bold text-[#dae2fd]">Quality Reach OLV</div>
+<div>© 2026 Admon × Mediascope. Demo landing.</div>
+</div>
+<div class="flex flex-wrap gap-x-6 gap-y-3">
+<a class="hover:text-[#dae2fd] transition-colors duration-500" href="#product">Продукт</a>
+<a class="hover:text-[#dae2fd] transition-colors duration-500" href="#methodology">Методология</a>
+<a class="hover:text-[#dae2fd] transition-colors duration-500" href="#pricing">Пакеты</a>
+<a class="hover:text-[#dae2fd] transition-colors duration-500" href="#contact">Контакты</a>
+</div>
+</div>
+</footer>
+<script>
+  // FAQ accordion (no dependencies)
+  (function () {
+    const items = Array.from(document.querySelectorAll('[data-faq-item="true"]'));
+    items.forEach((item) => {
+      const btn = item.querySelector('button');
+      const panels = item.querySelectorAll('div');
+      const body = panels[0];
+      const icon = item.querySelector('.material-symbols-outlined');
+      if (!btn || !body) return;
+
+      btn.addEventListener('click', () => {
+        const isOpen = !body.classList.contains('hidden');
+
+        items.forEach((other) => {
+          if (other === item) return;
+          const otherBody = other.querySelectorAll('div')[0];
+          const otherIcon = other.querySelector('.material-symbols-outlined');
+          if (otherBody && !otherBody.classList.contains('hidden')) otherBody.classList.add('hidden');
+          if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+        });
+
+        if (isOpen) {
+          body.classList.add('hidden');
+          if (icon) icon.style.transform = 'rotate(0deg)';
+        } else {
+          body.classList.remove('hidden');
+          if (icon) icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+  })();
+
+  (function () {
+    const toggle = document.getElementById("nav-toggle");
+    const menu = document.getElementById("nav-mobile");
+    const icon = toggle && toggle.querySelector(".material-symbols-outlined");
+    if (!toggle || !menu) return;
+
+    function syncIcon(open) {
+      if (!icon) return;
+      icon.textContent = open ? "close" : "menu";
+      toggle.setAttribute("aria-label", open ? "Закрыть меню" : "Открыть меню");
+    }
+
+    toggle.addEventListener("click", () => {
+      const open = menu.classList.toggle("hidden") === false;
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      syncIcon(open);
+    });
+
+    menu.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        menu.classList.add("hidden");
+        toggle.setAttribute("aria-expanded", "false");
+        syncIcon(false);
+      });
+    });
+
+    window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => {
+      if (e.matches) {
+        menu.classList.add("hidden");
+        toggle.setAttribute("aria-expanded", "false");
+        syncIcon(false);
+      }
+    });
+  })();
+</script>
+</body></html>
