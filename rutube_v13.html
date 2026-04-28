@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>rutube_v13</title>
+
+    <meta http-equiv="refresh" content="0; url=./index.html" />
+    <link rel="canonical" href="./index.html" />
+
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: #0b1326;
+        color: #dae2fd;
+      }
+      a { color: #b1c5ff; }
+      .wrap { min-height: 100dvh; display: grid; place-items: center; padding: 24px; }
+      .card {
+        width: min(720px, 100%);
+        border: 1px solid rgba(66, 70, 84, 0.5);
+        border-radius: 16px;
+        padding: 20px 18px;
+        background: rgba(19, 27, 46, 0.7);
+      }
+      .title { font-weight: 700; font-size: 18px; margin: 0 0 6px; }
+      .sub { margin: 0; opacity: 0.85; line-height: 1.5; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card" role="status" aria-live="polite">
+        <p class="title">Переадресация…</p>
+        <p class="sub">
+          Если переход не сработал автоматически, откройте
+          <a href="./index.html">главную страницу</a>.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Keep this page usable even if meta refresh is blocked.
+      window.location.replace("./index.html");
+    </script>
+  </body>
+</html>
+
